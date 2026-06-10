@@ -8,4 +8,4 @@ sidebar: false
 
 ## 产品
 
-- [TailTip](/zh/wiki/tailtip/) - TailTip 边缘传感器
+- [TailTip](./tailtip/index) - TailTip 边缘传感器

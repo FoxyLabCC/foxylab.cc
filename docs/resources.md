@@ -6,5 +6,5 @@ resources:
 
   - name: Wiki
     icon: /flabtail.svg
-    link: /wiki/index
+    link: ./wiki/index
 ---
