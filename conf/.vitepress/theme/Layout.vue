@@ -94,7 +94,7 @@ const langs = [
     </div>
   </div>
   <div v-else class="wiki-wrapper">
-    <a href="/" class="bg-logo-link">
+    <a href="/" class="bg-logo-link wiki-back-link">
       <img src="/flabtail.svg" alt="Back to home" class="wiki-bg" />
     </a>
     <DefaultTheme.Layout />
@@ -117,6 +117,21 @@ const langs = [
   z-index: 0;
   pointer-events: none;
   transition: opacity 0.3s;
+}
+
+.wiki-back-link {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: clamp(140px, 22vw, 320px);
+  height: auto;
+  display: block;
+  z-index: 30;
+}
+
+.wiki-back-link .wiki-bg {
+  position: static;
+  width: 100%;
 }
 
 .bg-logo-link:hover .wiki-bg {
@@ -151,5 +166,12 @@ const langs = [
 .wiki-wrapper :deep(.VPDoc) {
   background: transparent !important;
   padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .wiki-back-link {
+    width: clamp(96px, 30vw, 180px);
+    z-index: 40;
+  }
 }
 </style>
