@@ -32,7 +32,7 @@ function generateSidebar(basePath: string, urlPrefix: string) {
 }
 
 export default defineConfig({
-  srcDir: "..\\docs",
+  srcDir: "../docs",
 
   locales: {
     root: {
