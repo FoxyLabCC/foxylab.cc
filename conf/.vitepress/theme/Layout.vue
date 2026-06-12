@@ -93,7 +93,7 @@ const langs = [
           :key="idx"
           :href="resource.link"
           class="resource-item"
-          target="_blank"
+          :target="resource.target || '_blank'"
         >
           <img :src="resource.icon" :alt="resource.name" class="resource-icon" />
           <span class="resource-name">{{ resource.name }}</span>

@@ -7,4 +7,5 @@ resources:
   - name: Wiki
     icon: /flabtail.svg
     link: ./wiki/index
+    target: _self
 ---
