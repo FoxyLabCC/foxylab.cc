@@ -336,6 +336,10 @@ aside.VPSidebar * {
     z-index: 40;
   }
 
+  .wiki-index .mobile-menu-btn {
+    display: none;
+  }
+
   .mobile-menu-btn:hover {
     background: rgba(255, 255, 255, 0.95);
     transform: translateY(-2px);
