@@ -266,29 +266,6 @@ html, body {
   font-weight: 500;
 }
 
-.wiki-layout {
-  position: relative;
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-.wiki-layout .VPSidebar {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.wiki-layout .VPContent {
-  background: transparent;
-}
-
-.wiki-layout .VPDocAside {
-  background: transparent;
-}
-
 .wiki-wrapper {
   position: relative;
   min-height: 100vh;
@@ -305,29 +282,6 @@ html, body {
   pointer-events: none;
 }
 
-.wiki-wrapper :deep(.VPSidebar) {
-  background: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-  padding: 1rem !important;
-}
-
-.wiki-wrapper :deep(.VPSidebar .group) {
-  background: transparent !important;
-}
-
-.wiki-wrapper :deep(.VPDoc) {
-  background: transparent;
-}
-
-.wiki-wrapper :deep(.VPDocAside) {
-  background: transparent;
-}
-
-.wiki-wrapper :deep(.VPNav),
-/* Hide navigation */
 .VPNav,
 .VPNavBar,
 .VPLocalNav,
@@ -337,19 +291,6 @@ header.VPNav {
   display: none !important;
 }
 
-.wiki-wrapper .VPNav,
-.wiki-wrapper .VPNavBar {
-  display: none !important;
-}
-
-.wiki-wrapper :deep(.VPSidebar .title),
-.wiki-wrapper :deep(.VPSidebar h1),
-.wiki-wrapper :deep(.VPSidebarItem.level-0 .text) {
-  display: none;
-}
-
-/* Wiki sidebar styles - floating card */
-.wiki-wrapper aside.VPSidebar,
 aside.VPSidebar {
   position: fixed !important;
   top: 2rem !important;
@@ -357,9 +298,9 @@ aside.VPSidebar {
   width: 220px !important;
   max-height: calc(100vh - 4rem) !important;
   padding: 1.5rem !important;
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   border: 2px solid rgba(0, 0, 0, 0.1) !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;

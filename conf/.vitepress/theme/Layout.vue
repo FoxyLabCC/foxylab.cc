@@ -167,9 +167,9 @@ const langs = [
   left: 2rem !important;
   width: 220px !important;
   max-height: calc(100vh - 4rem) !important;
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   border: 2px solid rgba(0, 0, 0, 0.1) !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
