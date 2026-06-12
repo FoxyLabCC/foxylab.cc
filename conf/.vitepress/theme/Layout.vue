@@ -1,15 +1,35 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 
 const { site, frontmatter } = useData()
 const route = useRoute()
 const showLangMenu = ref(false)
+const showMobileSidebar = ref(false)
 
 const toggleLangMenu = () => {
   showLangMenu.value = !showLangMenu.value
 }
+
+const toggleMobileSidebar = () => {
+  showMobileSidebar.value = !showMobileSidebar.value
+}
+
+const closeMobileSidebar = (e: Event) => {
+  const target = e.target as HTMLElement
+  if (!target.closest('.VPSidebar') && !target.closest('.mobile-menu-btn')) {
+    showMobileSidebar.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', closeMobileSidebar)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeMobileSidebar)
+})
 
 const homeLink = computed(() => {
   const currentLang = langs.find(lang =>
@@ -101,10 +121,17 @@ const langs = [
       </div>
     </div>
   </div>
-  <div v-else class="wiki-wrapper" :class="{ 'wiki-index': frontmatter.sidebar === false }">
+  <div v-else class="wiki-wrapper" :class="{ 'wiki-index': frontmatter.sidebar === false, 'sidebar-open': showMobileSidebar }">
     <a :href="homeLink" class="bg-logo-link wiki-back-link">
       <img src="/flabtail.svg" alt="Back to home" class="wiki-bg" />
     </a>
+    <button @click="toggleMobileSidebar" class="mobile-menu-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
     <DefaultTheme.Layout />
   </div>
 </template>
@@ -174,6 +201,7 @@ const langs = [
   border-radius: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   z-index: 20 !important;
+  transition: transform 0.3s, opacity 0.3s !important;
 }
 
 
@@ -201,12 +229,8 @@ const langs = [
     z-index: 10;
   }
 
-  .wiki-wrapper :deep(aside.VPSidebar) {
-    z-index: 60 !important;
+  .mobile-menu-btn {
+    display: flex;
   }
-}
-
-.wiki-index .wiki-back-link {
-  z-index: 1;
 }
 </style>
