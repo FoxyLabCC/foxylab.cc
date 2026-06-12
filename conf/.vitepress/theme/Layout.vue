@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { ref } from 'vue'
+import { useData, useRoute } from 'vitepress'
+import { ref, computed } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 
 const { site, frontmatter } = useData()
+const route = useRoute()
 const showLangMenu = ref(false)
 
 const toggleLangMenu = () => {
   showLangMenu.value = !showLangMenu.value
 }
+
+const homeLink = computed(() => {
+  const currentLang = langs.find(lang =>
+    lang.path !== '/' && route.path.startsWith(lang.path)
+  )
+  return currentLang ? currentLang.path : '/'
+})
 
 const langs = [
   { code: 'en', label: 'English', path: '/' },
@@ -51,7 +59,7 @@ const langs = [
     </div>
   </div>
   <div v-else-if="frontmatter.products" class="products-layout">
-    <a href="/" class="bg-logo-link">
+    <a :href="homeLink" class="bg-logo-link">
       <img src="/flabtail.svg" alt="Back to home" class="bg-logo" />
     </a>
     <div class="products-container">
@@ -75,7 +83,7 @@ const langs = [
     </div>
   </div>
   <div v-else-if="frontmatter.resources" class="resources-layout">
-    <a href="/" class="bg-logo-link">
+    <a :href="homeLink" class="bg-logo-link">
       <img src="/flabtail.svg" alt="Back to home" class="bg-logo" />
     </a>
     <div class="resources-card">
@@ -93,8 +101,8 @@ const langs = [
       </div>
     </div>
   </div>
-  <div v-else class="wiki-wrapper">
-    <a href="/" class="bg-logo-link wiki-back-link">
+  <div v-else class="wiki-wrapper" :class="{ 'wiki-index': frontmatter.sidebar === false }">
+    <a :href="homeLink" class="bg-logo-link wiki-back-link">
       <img src="/flabtail.svg" alt="Back to home" class="wiki-bg" />
     </a>
     <DefaultTheme.Layout />
@@ -120,18 +128,24 @@ const langs = [
 }
 
 .wiki-back-link {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: clamp(140px, 22vw, 320px);
-  height: auto;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: clamp(140px, 22vw, 320px) !important;
+  height: clamp(100px, 18vh, 240px) !important;
   display: block;
-  z-index: 30;
+  z-index: 1;
+  overflow: visible;
 }
 
 .wiki-back-link .wiki-bg {
-  position: static;
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60vw !important;
+  max-width: none !important;
+  height: auto;
+  pointer-events: none;
 }
 
 .bg-logo-link:hover .wiki-bg {
@@ -170,8 +184,16 @@ const langs = [
 
 @media (max-width: 768px) {
   .wiki-back-link {
-    width: clamp(96px, 30vw, 180px);
-    z-index: 40;
+    width: clamp(64px, 20vw, 120px);
+    z-index: 50;
   }
+
+  .wiki-index .wiki-back-link {
+    z-index: 10;
+  }
+}
+
+.wiki-index .wiki-back-link {
+  z-index: 1;
 }
 </style>
