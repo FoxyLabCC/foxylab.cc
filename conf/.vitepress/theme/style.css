@@ -370,3 +370,18 @@ aside.VPSidebar {
 aside.VPSidebar * {
   background: transparent !important;
 }
+
+@media (max-width: 768px) {
+  .VPBackdrop,
+  div.VPBackdrop {
+    background: transparent !important;
+    opacity: 0 !important;
+    z-index: 45 !important;
+  }
+
+  aside.VPSidebar,
+  .VPSidebar,
+  .wiki-wrapper aside.VPSidebar {
+    z-index: 60 !important;
+  }
+}

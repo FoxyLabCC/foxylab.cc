@@ -152,6 +152,15 @@ const langs = [
   opacity: 0.3;
 }
 
+.wiki-wrapper :deep(.VPBackdrop),
+.VPBackdrop,
+.backdrop {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .wiki-wrapper :deep(aside.VPSidebar) {
   position: fixed !important;
   top: 2rem !important;
@@ -190,6 +199,10 @@ const langs = [
 
   .wiki-index .wiki-back-link {
     z-index: 10;
+  }
+
+  .wiki-wrapper :deep(aside.VPSidebar) {
+    z-index: 60 !important;
   }
 }
 
